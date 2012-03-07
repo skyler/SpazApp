@@ -1,5 +1,6 @@
-package co.bugjar.android.crasher;
+package co.bugjar.android.spazapp;
 
+import co.bugjar.android.crasher.R;
 import co.bugjar.android.monitor.BugjarMonitor;
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ public class CrasherActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        BugjarMonitor.initialize(this, "4ef56fcc8fc4230804000001");
+        String deviceIdentifier = generateDeviceIdentifier();
+        
+        BugjarMonitor.initialize(this, "4ef56fcc8fc4230804000001", deviceIdentifier);
         
         Button b1 = (Button) findViewById(R.id.button1);
         b1.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +47,12 @@ public class CrasherActivity extends Activity {
             }
         });
         
+    }
+    
+    private String generateDeviceIdentifier()
+    {
+        // magic goes here
+        return "8675309";
     }
    
 }
